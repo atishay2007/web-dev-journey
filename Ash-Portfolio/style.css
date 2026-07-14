@@ -1,0 +1,383 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: #0a0a0a;
+    color: #fff;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><text y="15" font-size="16">🍳</text></svg>'), auto;
+}
+
+.loading-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+    width: 0%;
+    z-index: 9999;
+    transition: width 2s ease;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.profile-pic {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 4px solid #4ecdc4;
+    object-fit: cover;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+}
+
+.profile-pic:hover {
+    filter: contrast(1.2) brightness(1.1);
+    transform: scale(1.05);
+}
+
+h1 {
+    font-size: 60px;
+    color: #4ecdc4;
+    margin-bottom: 10px;
+    animation: glitch 3s infinite;
+}
+
+@keyframes glitch {
+
+    0%,
+    100% {
+        text-shadow: 2px 2px #ff6b6b, -2px -2px #4ecdc4;
+    }
+
+    50% {
+        text-shadow: -2px -2px #ff6b6b, 2px 2px #4ecdc4;
+    }
+}
+
+.tagline {
+    font-size: 18px;
+    color: #999;
+    margin-bottom: 30px;
+}
+
+#canvas-box {
+    width: 250px;
+    height: 250px;
+    margin: 30px auto;
+}
+
+.social {
+    margin-top: 30px;
+}
+
+.social a {
+    color: #4ecdc4;
+    margin: 0 20px;
+    text-decoration: none;
+    border: 2px solid #4ecdc4;
+    padding: 10px 20px;
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+.social a:hover {
+    background: #4ecdc4;
+    color: #0a0a0a;
+    transform: translateY(-3px);
+}
+
+section {
+    margin: 80px 0;
+    padding: 40px;
+    background: #1a1a1a;
+    border-left: 4px solid #4ecdc4;
+}
+
+h2 {
+    color: #ff6b6b;
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+.mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #4ecdc4;
+    color: #0a0a0a;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    z-index: 1000;
+}
+
+.mode-toggle:hover {
+    background: #ff6b6b;
+    color: #fff;
+}
+
+/* About section */
+.about-grid {
+    display: grid;
+    gap: 15px;
+}
+
+.about-text {
+    line-height: 1.8;
+    color: #ccc;
+}
+
+/* Hostel stats */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.stat-box {
+    background: #0f0f0f;
+    padding: 20px;
+    border: 1px solid #333;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 36px;
+    color: #4ecdc4;
+    font-weight: bold;
+}
+
+.stat-label {
+    color: #999;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+/* Skills with progress bars */
+.skill-item {
+    margin: 15px 0;
+}
+
+.skill-name {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    color: #ccc;
+}
+
+.progress-bar {
+    background: #0f0f0f;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+    transition: width 1s ease;
+}
+
+/* Projects */
+.project-card {
+    background: #0f0f0f;
+    padding: 25px;
+    margin-bottom: 20px;
+    border: 1px solid #333;
+    transition: all 0.3s;
+}
+
+.project-card:hover {
+    border-color: #4ecdc4;
+    transform: translateX(10px);
+}
+
+.project-card h3 {
+    color: #4ecdc4;
+    margin-bottom: 10px;
+}
+
+/* Achievements */
+.achievement-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.achievement-card {
+    background: #0f0f0f;
+    padding: 15px;
+    border: 1px solid #333;
+    font-size: 14px;
+    color: #999;
+}
+
+/* Random fact button */
+.fact-section {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.fact-btn {
+    background: #ff6b6b;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.fact-btn:hover {
+    background: #4ecdc4;
+}
+
+.fact-display {
+    min-height: 60px;
+    background: #0f0f0f;
+    padding: 20px;
+    border-left: 4px solid #4ecdc4;
+    color: #ccc;
+    font-style: italic;
+}
+
+/* Rating slider */
+.rating-section {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.rating-slider {
+    width: 80%;
+    margin: 20px auto;
+    display: block;
+}
+
+.rating-feedback {
+    color: #4ecdc4;
+    font-size: 20px;
+    margin-top: 15px;
+    min-height: 30px;
+}
+
+/* Testimonials */
+.testimonial {
+    background: #0f0f0f;
+    padding: 20px;
+    margin: 15px 0;
+    border-left: 3px solid #ff6b6b;
+    font-style: italic;
+    color: #999;
+}
+
+.testimonial-author {
+    color: #4ecdc4;
+    margin-top: 10px;
+    font-style: normal;
+    font-size: 14px;
+}
+
+/* Why hire me */
+.why-list {
+    list-style: none;
+    padding: 0;
+}
+
+.why-list li {
+    padding: 15px;
+    margin: 10px 0;
+    background: #0f0f0f;
+    border-left: 3px solid #4ecdc4;
+    color: #ccc;
+}
+
+.why-list li:before {
+    content: "→ ";
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+/* Contact */
+.contact-box {
+    text-align: center;
+    padding: 30px;
+    background: #0f0f0f;
+}
+
+.contact-box a {
+    color: #4ecdc4;
+    text-decoration: none;
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}
+
+.easter-egg {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ff6b6b;
+    padding: 40px;
+    border: 4px solid #4ecdc4;
+    z-index: 10000;
+    text-align: center;
+    font-size: 24px;
+}
+
+.easter-egg.show {
+    display: block;
+    animation: popup 0.5s ease;
+}
+
+@keyframes popup {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    .stats-grid,
+    .achievement-grid {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 25px;
+    }
+}
